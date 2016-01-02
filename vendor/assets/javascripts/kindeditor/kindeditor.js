@@ -5845,13 +5845,22 @@ _plugin('core', function(K) {
 			K(doc.body).append(div);
 			if (_IE) {
 				var rng = cmd.range.get(true);
-				rng.moveToElementText(div[0]);
-				rng.select();
-				rng.execCommand('paste');
-				e.preventDefault();
+				try {
+					rng.moveToElementText(div[0]);
+					rng.select();
+					rng.execCommand('paste');
+					e.preventDefault();
+				} catch (e) { }
 			} else {
-				cmd.range.selectNodeContents(div[0]);
-				cmd.select();
+				// cmd.range.selectNodeContents(div[0]);
+				// cmd.select();
+				var rng = cmd.range.get(true);
+				try {
+			    rng.moveToElementText(div[0]);
+			    rng.select();
+			    rng.execCommand('paste');
+			    e.preventDefault();
+			  } catch (e) { }
 			}
 			setTimeout(function() {
 				movePastedData();
