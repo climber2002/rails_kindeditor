@@ -5809,7 +5809,19 @@ _plugin('core', function(K) {
 				html = html.replace(/\n\s*\n/g, '\n');
 				html = html.replace(/<br[^>]*>/ig, '\n');
 				html = html.replace(/<\/p><p[^>]*>/ig, '\n');
-				html = html.replace(/<[^>]+>/g, '');
+				html = html.replace(/<strong>/g, '[[strong]]');
+				html = html.replace(/<\/strong>/g, '[[/strong]]');
+				html = html.replace(/<u>/g, '[[u]]');
+				html = html.replace(/<\/u>/g, '[[/u]]');
+				html = html.replace(/<i>/g, '[[i]]');
+				html = html.replace(/<\/i>/g, '[[/i]]');
+				html = html.replace(/<([^>]+)>/g, '');
+				html = html.replace(/\[\[strong\]\]/g, '<strong>');
+				html = html.replace(/\[\[\/strong\]\]/g, '</strong>');
+				html = html.replace(/\[\[u\]\]/g, '<u>');
+				html = html.replace(/\[\[\/u\]\]/g, '</u>');
+				html = html.replace(/\[\[i\]\]/g, '<i>');
+				html = html.replace(/\[\[\/i\]\]/g, '</i>');
 				html = html.replace(/ {2}/g, ' &nbsp;');
 				if (self.newlineTag == 'p') {
 					if (/\n/.test(html)) {
