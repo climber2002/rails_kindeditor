@@ -5810,11 +5810,13 @@ _plugin('core', function(K) {
 				html = html.replace(/<br[^>]*>/ig, '\n');
 				html = html.replace(/<\/p><p[^>]*>/ig, '\n');
 				html = html.replace(/<h.*?>/g, '[[strong]]');
-				html = html.replace(/<\/h.*?>/g, '[[strong]]');
+				html = html.replace(/<\/h.*?>/g, '[[/strong]]');
 				html = html.replace(/<strong>/g, '[[strong]]');
  				html = html.replace(/<\/strong>/g, '[[/strong]]');
  				html = html.replace(/<bold>/g, '[[strong]]');
- 				html = html.replace(/<\/bold>/g, '[[strong]]');
+ 				html = html.replace(/<\/bold>/g, '[[/strong]]');
+ 				html = html.replace(/<b>/g, '[[strong]]');
+ 				html = html.replace(/<\/b>/g, '[[/strong]]');
  				html = html.replace(/<u>/g, '[[u]]');
  				html = html.replace(/<\/u>/g, '[[/u]]');
  				html = html.replace(/<i>/g, '[[i]]');
