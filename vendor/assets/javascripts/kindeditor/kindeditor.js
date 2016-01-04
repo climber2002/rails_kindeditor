@@ -5850,8 +5850,13 @@ _plugin('core', function(K) {
 				rng.execCommand('paste');
 				e.preventDefault();
 			} else {
-				cmd.range.selectNodeContents(div[0]);
-				cmd.select();
+				// cmd.range.selectNodeContents(div[0]);
+				// cmd.select();
+				var rng = cmd.range.get(true);
+		    rng.moveToElementText(div[0]);
+		    rng.select();
+		    rng.execCommand('paste');
+		    e.preventDefault();
 			}
 			setTimeout(function() {
 				movePastedData();
