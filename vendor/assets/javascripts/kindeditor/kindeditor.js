@@ -245,7 +245,7 @@ K.options = {
 	newlineTag : 'p',
 	resizeType : 2,
 	syncType : 'form',
-	pasteType : 2,
+	pasteType : 1,
 	dialogAlignType : 'page',
 	useContextmenu : true,
 	fullscreenShortcut : false,
@@ -5809,7 +5809,28 @@ _plugin('core', function(K) {
 				html = html.replace(/\n\s*\n/g, '\n');
 				html = html.replace(/<br[^>]*>/ig, '\n');
 				html = html.replace(/<\/p><p[^>]*>/ig, '\n');
-				html = html.replace(/<[^>]+>/g, '');
+
+				html = html.replace(/<h.*?>/g, '[[strong]]');
+				html = html.replace(/<\/h.*?>/g, '[[strong]]');
+				html = html.replace(/<strong>/g, '[[strong]]');
+ 				html = html.replace(/<\/strong>/g, '[[/strong]]');
+ 				html = html.replace(/<bold>/g, '[[strong]]');
+ 				html = html.replace(/<\/bold>/g, '[[strong]]');
+ 				html = html.replace(/<u>/g, '[[u]]');
+ 				html = html.replace(/<\/u>/g, '[[/u]]');
+ 				html = html.replace(/<i>/g, '[[i]]');
+ 				html = html.replace(/<\/i>/g, '[[/i]]');
+
+ 				html = html.replace(/<([^>]+)>/g, '');
+
+ 				html = html.replace(/\[\[strong\]\]/g, '<strong>');
+ 				html = html.replace(/\[\[\/strong\]\]/g, '</strong>');
+ 				html = html.replace(/\[\[u\]\]/g, '<u>');
+ 				html = html.replace(/\[\[\/u\]\]/g, '</u>');
+ 				html = html.replace(/\[\[i\]\]/g, '<i>');
+ 				html = html.replace(/\[\[\/i\]\]/g, '</i>');
+
+
 				html = html.replace(/ {2}/g, ' &nbsp;');
 				if (self.newlineTag == 'p') {
 					if (/\n/.test(html)) {
@@ -5850,13 +5871,8 @@ _plugin('core', function(K) {
 				rng.execCommand('paste');
 				e.preventDefault();
 			} else {
-				// cmd.range.selectNodeContents(div[0]);
-				// cmd.select();
-				var rng = cmd.range.get(true);
-		    rng.moveToElementText(div[0]);
-		    rng.select();
-		    rng.execCommand('paste');
-		    e.preventDefault();
+				cmd.range.selectNodeContents(div[0]);
+				cmd.select();
 			}
 			setTimeout(function() {
 				movePastedData();
