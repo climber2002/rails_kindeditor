@@ -5808,8 +5808,9 @@ _plugin('core', function(K) {
 				html = html.replace(/&nbsp;/ig, ' ');
 				html = html.replace(/\n\s*\n/g, '\n');
 				html = html.replace(/<br[^>]*>/ig, '\n');
-				html = html.replace(/<\/p><p[^>]*>/ig, '\n');
-
+				//html = html.replace(/<\/p><p[^>]*>/ig, '\n');
+				html = html.replace(/<p>/g, '[[p]]');
+				html = html.replace(/<\/p>/g, '[[/p]]');
 				html = html.replace(/<h.*?>/g, '[[strong]]');
 				html = html.replace(/<\/h.*?>/g, '[[strong]]');
 				html = html.replace(/<strong>/g, '[[strong]]');
@@ -5822,7 +5823,8 @@ _plugin('core', function(K) {
  				html = html.replace(/<\/i>/g, '[[/i]]');
 
  				html = html.replace(/<([^>]+)>/g, '');
-
+ 				html = html.replace(/\[\[p\]\]/g, '<p>');
+ 				html = html.replace(/\[\[\/p\]\]/g, '</p>');
  				html = html.replace(/\[\[strong\]\]/g, '<strong>');
  				html = html.replace(/\[\[\/strong\]\]/g, '</strong>');
  				html = html.replace(/\[\[u\]\]/g, '<u>');
