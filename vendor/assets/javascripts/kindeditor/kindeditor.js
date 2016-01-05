@@ -5806,7 +5806,6 @@ _plugin('core', function(K) {
 			}
 			if (self.pasteType === 1) {
 				html = html.replace(/&nbsp;/ig, ' ');
-				html = html.replace(/\n/g, ' ');
 
 				html = html.replace(/<span class="boldunderline">([\s\S]*?)<\/span>/gm, "[[strong]][[u]]$1[[/u]][[/strong]]")
 				html = html.replace(/<span class="bold">([\s\S]*?)<\/span>/gm, "[[strong]]$1[[/strong]]")
