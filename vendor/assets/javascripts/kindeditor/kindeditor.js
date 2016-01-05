@@ -5808,7 +5808,8 @@ _plugin('core', function(K) {
 				html = html.replace(/&nbsp;/ig, ' ');
 
 				html = html.replace(/\n/g, ' ');
-
+				html = html.replace(/<font(\s+.*?)?>\s*?<\/font>/gm, '')
+				
 				html = html.replace(/<span class="boldunderline">([\s\S]*?)<\/span>/gm, "[[strong]][[u]]$1[[/u]][[/strong]]")
 				html = html.replace(/<span class="bold">([\s\S]*?)<\/span>/gm, "[[strong]]$1[[/strong]]")
 				html = html.replace(/<span class="underline">([\s\S]*?)<\/span>/gm, "[[u]]$1[[/u]]")
@@ -5816,6 +5817,7 @@ _plugin('core', function(K) {
 				html = html.replace(/\n\s*\n/g, '\n');
 				html = html.replace(/<br[^>]*>/ig, '\n');
 				html = html.replace(/<\/p>\s*?<p[^>]*>/ig, '\n');
+
 
 				html = html.replace(/<h.*?>/g, '[[strong]]');
 				html = html.replace(/<\/h.*?>/g, '[[/strong]]');
