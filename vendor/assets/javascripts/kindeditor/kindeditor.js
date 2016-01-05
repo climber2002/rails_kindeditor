@@ -5815,7 +5815,7 @@ _plugin('core', function(K) {
 
 				html = html.replace(/\n\s*\n/g, '\n');
 				html = html.replace(/<br[^>]*>/ig, '\n');
-				html = html.replace(/<\/p><p[^>]*>/ig, '\n');
+				html = html.replace(/<\/p>\s*?<p[^>]*>/ig, '\n');
 
 				html = html.replace(/<h.*?>/g, '[[strong]]');
 				html = html.replace(/<\/h.*?>/g, '[[/strong]]');
