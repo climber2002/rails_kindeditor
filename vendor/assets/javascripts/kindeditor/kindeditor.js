@@ -5808,9 +5808,8 @@ _plugin('core', function(K) {
 				html = html.replace(/&nbsp;/ig, ' ');
 
 				html = html.replace(/\n/g, ' ');
-				// remove empty tags like <font ...>\n\n</font>
-				html = html.replace(/<.*?>\s*?<\/.*?>/gm, '')
-
+				html = html.replace(/<font(\s+.*?)?>\s*?<\/font>/gm, '')
+				
 				html = html.replace(/<span class="boldunderline">([\s\S]*?)<\/span>/gm, "[[strong]][[u]]$1[[/u]][[/strong]]")
 				html = html.replace(/<span class="bold">([\s\S]*?)<\/span>/gm, "[[strong]]$1[[/strong]]")
 				html = html.replace(/<span class="underline">([\s\S]*?)<\/span>/gm, "[[u]]$1[[/u]]")
